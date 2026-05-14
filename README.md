@@ -16,6 +16,18 @@ Built with Next.js 15, React 19, PostgreSQL, and Tailwind CSS 4.
 
 ---
 
+## 🖼️ Screenshots
+
+> _Agrega capturas de pantalla aquí. Sugerencia: toma screenshots del login, el dashboard principal, la vista de productos y la de órdenes, y arrástralos a esta sección al editar en GitHub._
+
+<!-- Ejemplo:
+![Login](public/screenshots/login.png)
+![Dashboard](public/screenshots/dashboard.png)
+![Productos](public/screenshots/products.png)
+-->
+
+---
+
 ## 📋 Overview
 
 **Apple Hub** is a production-grade admin dashboard built for internal use at an Apple product distribution center. It provides a centralized platform to manage customers, inventory, orders, returns, warranties, and revenue tracking — all secured behind role-based authentication.
@@ -97,7 +109,7 @@ The system implements a full **CRUD** architecture using **Next.js API Routes** 
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/your-username/apple-hub.git
+git clone https://github.com/morafelipe/apple-hub.git
 cd apple-hub
 ```
 
@@ -205,6 +217,15 @@ src/
 
 ---
 
+## 🗺️ Próximos pasos
+
+- [ ] Implementar RBAC real a nivel de base de datos: conectar `adminPool` y `employeePool` en los API routes para que el bloqueo de DELETE sea efectivo en el servidor, no solo en la UI
+- [ ] Migrar contraseñas del seed (`admin`, `empleado01`, `empleado02`) a hashes bcrypt antes de cualquier deploy en producción
+- [ ] Agregar paginación server-side en las listas de clientes, productos y órdenes
+- [ ] Dashboard de métricas con gráficas de ingresos históricos
+
+---
+
 ## 🤝 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -216,7 +237,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 **Andres Felipe Mora Mancipe**  
 Full-Stack & Mobile Developer
 
-[![GitHub](https://img.shields.io/badge/GitHub-@andresfelipemora-181717?style=flat-square&logo=github)](https://github.com/andresfelipemora)
+[![GitHub](https://img.shields.io/badge/GitHub-@morafelipe-181717?style=flat-square&logo=github)](https://github.com/morafelipe)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Andres_Mora-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/andresfelipemora)
 [![Email](https://img.shields.io/badge/Email-andresfelipemoramancipe@gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:andresfelipemoramancipe@gmail.com)
 
