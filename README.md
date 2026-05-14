@@ -22,35 +22,6 @@ Built with Next.js 15, React 19, PostgreSQL, and Tailwind CSS 4.
 
 The system implements a full **CRUD** architecture using **Next.js API Routes** as the backend, a **PostgreSQL** relational database with stored procedures and triggers, and **JWT-based authentication** enforced via Next.js middleware.
 
----
-
-## 📸 Screenshots
-
-> **Login Page**
-> 
-> ![Login Page](https://placehold.co/900x500?text=Login+Page)
-
-> **Main Dashboard**
-> 
-> ![Dashboard Home](https://placehold.co/900x500?text=Dashboard+Home)
-
-> **Products Management**
-> 
-> ![Products](https://placehold.co/900x500?text=Products+Module)
-
-> **Orders & Order Items**
-> 
-> ![Orders](https://placehold.co/900x500?text=Orders+Module)
-
-> **Customers Module**
-> 
-> ![Customers](https://placehold.co/900x500?text=Customers+Module)
-
-> **Revenue Tracker**
-> 
-> ![Revenues](https://placehold.co/900x500?text=Revenue+Module)
-
----
 
 ## ✨ Features
 
