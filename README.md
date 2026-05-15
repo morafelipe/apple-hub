@@ -226,6 +226,12 @@ src/
 
 ---
 
+## 🔧 Pendientes técnicos
+
+- **Refactor:** las páginas de dashboard hacen fetch HTTP a su propia API desde Server Components. Reemplazar por llamadas directas a la lógica de la API para evitar latencia extra y dependencia de `baseUrl`. Afectado actualmente: `dashboard/revenues/page.js`.
+
+---
+
 ## 🤝 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
