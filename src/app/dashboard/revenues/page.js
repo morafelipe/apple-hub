@@ -1,5 +1,6 @@
 export default async function DashboardRevenues() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
   // Fetching de la data para mostrar en el front
   const response = await fetch(`${baseUrl}/api/revenues`, { cache: "no-store" });
   const { todayRevenues, historicRevenues, todayTotal, historicTotal } = await response.json();
