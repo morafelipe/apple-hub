@@ -226,6 +226,12 @@ src/
 
 ---
 
+## ⚠️ Limitaciones conocidas
+
+- **Cold start de Neon (plan free):** la primera petición tras inactividad puede tardar 5–15 s mientras la DB despierta. Pendiente: implementar loading state en login + warmup ping desde el cliente.
+
+---
+
 ## 🔧 Pendientes técnicos
 
 - ~~**Refactor:** las páginas de dashboard hacen fetch HTTP a su propia API desde Server Components. Reemplazar por llamadas directas a la lógica de la API para evitar latencia extra y dependencia de `baseUrl`.~~ **Resuelto:** `dashboard/revenues/page.js` ahora llama directamente a `lib/revenues.js`, sin HTTP fetch.
