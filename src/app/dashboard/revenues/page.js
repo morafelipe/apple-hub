@@ -1,9 +1,9 @@
+import { getRevenues } from "@/lib/revenues";
+
+export const dynamic = "force-dynamic";
+
 export default async function DashboardRevenues() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
-  // Fetching de la data para mostrar en el front
-  const response = await fetch(`${baseUrl}/api/revenues`, { cache: "no-store" });
-  const { todayRevenues, historicRevenues, todayTotal, historicTotal } = await response.json();
+  const { todayRevenues, historicRevenues, todayTotal, historicTotal } = await getRevenues();
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("es-CO", {
