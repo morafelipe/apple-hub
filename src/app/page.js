@@ -12,7 +12,14 @@ import Loader from "@/components/common/Loader";
 export default function Login() {
   const [visibleError, setVisibleError] = useState(false);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
+  // Warmup ping: wakes the Neon DB before the user submits credentials,
+  // reducing the cold-start delay from ~15 s to near-zero on the login request.
+  useEffect(() => {
+    fetch("/api/health").catch(() => {});
+  }, []);
 
   useEffect(() => {
     async function checkAuth() {
@@ -35,14 +42,19 @@ export default function Login() {
   const { request } = useFetchAction();
 
   const onClickLogin = async () => {
-    const result = await request("/api/login", postOptions(form));
-    console.log("Respuesta login:", result);
+    setIsLoading(true);
+    try {
+      const result = await request("/api/login", postOptions(form));
+      console.log("Respuesta login:", result);
 
-    if (result?.success) {
-      router.push("/dashboard");
-      console.log('Autorizado...');
-    } else {
-      setVisibleError(true);
+      if (result?.success) {
+        router.push("/dashboard");
+        console.log('Autorizado...');
+      } else {
+        setVisibleError(true);
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -78,7 +90,9 @@ export default function Login() {
                 type="password"
                 placeholder="Contraseña"
               />
-              <button onClick={onClickLogin}>Ingresar</button>
+              <button onClick={onClickLogin} disabled={isLoading}>
+                {isLoading ? "Iniciando sesión..." : "Ingresar"}
+              </button>
               <p className={styles.pLikeLink}>¿No puedes iniciar sesión?</p>
             </div>
           </div>
