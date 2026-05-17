@@ -228,7 +228,17 @@ src/
 
 ## ⚠️ Limitaciones conocidas
 
-- **Cold start de Neon (plan free):** la primera petición tras inactividad puede tardar 5–15 s mientras la DB despierta. Pendiente: implementar loading state en login + warmup ping desde el cliente.
+- ~~**Cold start de Neon (plan free):** la primera petición tras inactividad puede tardar 5–15 s mientras la DB despierta.~~ **Mitigado:** warmup ping automático en el login + loading state en el botón de submit. Ver sección "Manejo de cold start" más abajo.
+
+---
+
+## ❄️ Manejo de cold start (Neon free tier)
+
+La DB de Neon en plan gratuito suspende la conexión tras ~5 min de inactividad. La primera petición puede tardar 5–15 s. Estrategia implementada:
+
+1. **Warmup ping**: al montar el login page, se dispara automáticamente `GET /api/health` (fire-and-forget). Este endpoint ejecuta `SELECT 1`, despertando la DB antes de que el usuario introduzca sus credenciales.
+2. **Loading state**: el botón "Ingresar" cambia a "Iniciando sesión..." y se deshabilita mientras dura el request de login, previniendo doble-submit y dando feedback visual durante cualquier latencia residual.
+3. **Health endpoint**: `GET /api/health` — responde `{ status: "ok", db: "awake", timestamp }` (200) o `{ status: "error", db: "asleep" }` (503).
 
 ---
 
